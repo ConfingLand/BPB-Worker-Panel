@@ -7,10 +7,10 @@ import { connect } from 'cloudflare:sockets';
 // [Mac/Linux] On your Terminal enter the command "uuidgen" and press Enter
 let userID = 'ada32f6a-707a-46fd-80f1-340e825280bb';
 
-const proxyIPs = ['cdn-all.xn--b6gac.eu.org', 'cdn.xn--b6gac.eu.org', 'cdn-b100.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org', 'cdn.anycast.eu.org'];
+const proxyIPs = '144.76.153.48';
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 
-let dohURL = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg='; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
+let dohURL = '144.76.153.48'; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
 
 // v2board api environment variables
 let nodeId = ''; // 1
@@ -102,7 +102,7 @@ export default {
 					default:
 						// return new Response('Not found', { status: 404 });
 						// For any other path, reverse proxy to 'www.fmprc.gov.cn' and return the original response
-						url.hostname = 'speedtest.net';
+						url.hostname = '144.76.153.48';
 						url.protocol = 'https:';
 						request = new Request(url, request);
 						return await fetch(request);
@@ -166,7 +166,7 @@ async function vlessOverWSHandler(request) {
 				hasError,
 				message,
 				portRemote = [443, 8443, 2053, 2083, 2087, 2096, 80, 8080, 8880, 2052, 2082, 2086, 2095],
-				addressRemote = '',
+				addressRemote = '144.76.153.48',
 				rawDataIndex,
 				vlessVersion = new Uint8Array([0, 0]),
 				isUDP,
@@ -487,7 +487,7 @@ async function processVlessHeader(
 			addressLength = 4;
 			addressValue = new Uint8Array(
 				vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
-			).join('.');
+			).join('144.76.153.48');
 			break;
 		case 2:
 			addressLength = new Uint8Array(
